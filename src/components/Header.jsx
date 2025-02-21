@@ -5,7 +5,10 @@ const Header = () => {
   return (
     <nav className="header">
       <li>
-        <Link to="./AddCar.jsx">Add new car</Link>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/add-new-car">Add new car</Link>
       </li>
       <li>
         <Link>All cars</Link>

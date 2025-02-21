@@ -17,6 +17,7 @@
   cursor: pointer;
 }
 
-Link {
+a {
+  text-decoration: none;
   color: white;
 }

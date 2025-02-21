@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import AddCar from "./components/AddCar";
+import AddNewCarPage from "./pages/AddNewCarPage";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -9,9 +9,9 @@ function App() {
     <BrowserRouter>
       <div id="main">
         <Header />
-        <Hero />
         <Routes>
-          <Route element={AddCar} />
+          <Route path="/" element={<Hero />}></Route>
+          <Route path="/add-new-car" element={<AddNewCarPage />} />
         </Routes>
       </div>
     </BrowserRouter>

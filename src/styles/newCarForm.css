@@ -1,0 +1,30 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: calc(27% + 100px);
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 50px;
+  border: 1px solid white;
+  border-radius: 12px;
+}
+
+form input {
+  width: 90%;
+  height: 50px;
+  border: none;
+  border-radius: 7px;
+  font-size: 15px;
+  padding: 20px;
+}
+
+button {
+  padding: 15px;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
