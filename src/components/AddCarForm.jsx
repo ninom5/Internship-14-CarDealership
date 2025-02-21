@@ -1,7 +1,6 @@
 import Car from "../entity";
 import { use, useState } from "react";
 import "../styles/newCarForm.css";
-import Notify from "./ToastAlert";
 import { toast, ToastContainer } from "react-toastify";
 
 const AddCar = () => {
