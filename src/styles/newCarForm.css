@@ -12,13 +12,18 @@ form {
   border-radius: 12px;
 }
 
-form input {
+input,
+select {
   width: 90%;
   height: 50px;
   border: none;
   border-radius: 7px;
   font-size: 15px;
   padding: 20px;
+}
+
+select {
+  padding: 0 20px;
 }
 
 button {

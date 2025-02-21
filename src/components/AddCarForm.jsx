@@ -1,52 +1,111 @@
 import Car from "../entity";
-import { use, useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/newCarForm.css";
 import { toast, ToastContainer } from "react-toastify";
 
 const AddCar = () => {
+  const [cars, setCars] = useState([]);
   const [formData, setFormData] = useState({
     brand: "",
     model: "",
     type: "",
-    releaseYear: "",
+    productionYear: "",
     registrationExpiry: "",
   });
 
-  const [cars, setCars] = useState([]);
+  useEffect(() => {
+    const cars = JSON.parse(localStorage.getItem("cars")) || [];
+    if (cars.length > 0) setCars(cars);
+  }, []);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const savedCars = JSON.parse(localStorage.getItem("cars")) || [];
+
+    if (
+      formData.brand?.trim() === "" ||
+      formData.model?.trim() === "" ||
+      formData.type?.trim() === "" ||
+      !formData.productionYear ||
+      !formData.registrationExpiry
+    ) {
+      toast.error("All fields are required", {
+        position: "bottom-left",
+        theme: "dark",
+        closeOnClick: true,
+      });
+      console.log(
+        formData.brand,
+        formData.model,
+        formData.type,
+        formData.productionYear,
+        formData.registrationExpiry
+      );
+      return;
+    }
+
+    if (
+      isNaN(formData.productionYear) ||
+      formData.productionYear < 1885 ||
+      formData.productionYear > new Date().getFullYear()
+    ) {
+      toast.error("Release year must be number");
+      return;
+    }
+
+    // if (
+    //   savedCars.some(
+    //     (car) =>
+    //       car.brand === formData.brand &&
+    //       car.model === formData.model &&
+    //       car.type === formData.type
+    //   )
+    // ) {
+    //   toast.error("Car already exist", {
+    //     position: "bottom-left",
+    //     theme: "dark",
+    //   });
+    //   return;
+    // }
+
+    if (savedCars.length >= 10) {
+      toast.error("Already 10 cars added to page", {
+        position: "bottom-left",
+        theme: "dark",
+      });
+      return;
+    }
 
     const newCar = new Car(
       formData.brand,
       formData.model,
       formData.type,
-      formData.releaseYear,
+      formData.productionYear,
       formData.registrationExpiry
     );
 
-    const savedCars = JSON.parse(localStorage.getItem("cars")) || [];
-    const updatedCars = [...savedCars, newCar];
-
-    localStorage.setItem("cars", JSON.stringify(updatedCars));
-
-    setCars(updatedCars);
+    setCars((prevCars) => {
+      const updatedCars = [...savedCars, newCar];
+      localStorage.setItem("cars", JSON.stringify(updatedCars));
+      return updatedCars;
+    });
 
     setFormData({
       brand: "",
       model: "",
       type: "",
-      releaseYear: "",
+      productionYear: "",
       registrationExpiry: "",
     });
     toast.success("Car added successfully", {
       position: "bottom-left",
       theme: "dark",
-      closeOnClick: "true",
+      closeOnClick: true,
     });
   };
 
@@ -61,6 +120,7 @@ const AddCar = () => {
           onChange={handleChange}
           required
         />
+
         <input
           type="text"
           name="model"
@@ -69,21 +129,37 @@ const AddCar = () => {
           onChange={handleChange}
           required
         />
-        <input
-          type="text"
+
+        <select
           name="type"
           value={formData.type}
-          placeholder="Car type"
           onChange={handleChange}
           required
-        />
+        >
+          <option value="" disabled>
+            Select car type
+          </option>
+          <option value="sedan">Sedan</option>
+          <option value="coupe">Coupe</option>
+          <option value="convertible">Convertible</option>
+          <option value="crossover">Crossover</option>
+          <option value="electric">Electric</option>
+          <option value="hybrid">Hybrid</option>
+          <option value="luxury">Luxury</option>
+          <option value="sports car">Sports Car</option>
+          <option value="suv">Suv</option>
+          <option value="truck">Truck</option>
+          <option value="van">Van</option>
+          <option value="hatchback">Hatchback</option>
+        </select>
+
         <input
           type="number"
-          name="releaseYear"
-          value={formData.releaseYear}
+          name="productionYear"
+          value={formData.productionYear}
           min={1885}
           max={new Date().getFullYear()}
-          placeholder="Car release year"
+          placeholder="Car production year"
           onChange={handleChange}
           required
         />
