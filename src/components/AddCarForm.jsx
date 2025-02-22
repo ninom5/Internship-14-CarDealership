@@ -39,13 +39,15 @@ const AddCar = () => {
         theme: "dark",
         closeOnClick: true,
       });
-      console.log(
-        formData.brand,
-        formData.model,
-        formData.type,
-        formData.productionYear,
-        formData.registrationExpiry
-      );
+      return;
+    }
+
+    if (/\d/.test(formData.brand)) {
+      toast.error("Brand name can't have number", {
+        position: "bottom-left",
+        theme: "dark",
+        closeOnClick: true,
+      });
       return;
     }
 

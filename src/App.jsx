@@ -1,5 +1,4 @@
 import Header from "./components/Header";
-import Hero from "./components/Hero";
 import MainPage from "./pages/MainPage";
 import AddNewCarPage from "./pages/AddNewCarPage";
 import "./index.css";
