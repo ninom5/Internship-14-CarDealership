@@ -32,7 +32,7 @@ const CarCard = ({ car, setSavedCars }) => {
     return expiryDate <= dateMonthLater;
   };
 
-  const style = registrationExpiryCheck() ? { border: "1px solid red" } : {};
+  const style = registrationExpiryCheck() ? { border: "2px solid red" } : {};
 
   return (
     <div className="card" style={style}>

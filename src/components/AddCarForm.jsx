@@ -4,6 +4,51 @@ import "../styles/newCarForm.css";
 import { toast, ToastContainer } from "react-toastify";
 
 const AddCar = ({ setSavedCars }) => {
+  const validateData = (savedCars) => {
+    if (
+      formData.brand?.trim() === "" ||
+      formData.model?.trim() === "" ||
+      formData.type?.trim() === "" ||
+      !formData.productionYear ||
+      !formData.registrationExpiry
+    ) {
+      toast.error("All fields are required", {
+        position: "bottom-left",
+        theme: "dark",
+        closeOnClick: true,
+      });
+      return false;
+    }
+
+    if (/\d/.test(formData.brand)) {
+      toast.error("Brand name can't have number", {
+        position: "bottom-left",
+        theme: "dark",
+        closeOnClick: true,
+      });
+      return false;
+    }
+
+    if (
+      isNaN(formData.productionYear) ||
+      formData.productionYear < 1885 ||
+      formData.productionYear > new Date().getFullYear()
+    ) {
+      toast.error("Release year must be number");
+      return false;
+    }
+
+    if (savedCars.length >= 10) {
+      toast.error("Already 10 cars added to page", {
+        position: "bottom-left",
+        theme: "dark",
+      });
+      return false;
+    }
+
+    return true;
+  };
+
   const [formData, setFormData] = useState({
     brand: "",
     model: "",
@@ -21,46 +66,7 @@ const AddCar = ({ setSavedCars }) => {
     e.preventDefault();
     const savedCars = JSON.parse(localStorage.getItem("cars")) || [];
 
-    if (
-      formData.brand?.trim() === "" ||
-      formData.model?.trim() === "" ||
-      formData.type?.trim() === "" ||
-      !formData.productionYear ||
-      !formData.registrationExpiry
-    ) {
-      toast.error("All fields are required", {
-        position: "bottom-left",
-        theme: "dark",
-        closeOnClick: true,
-      });
-      return;
-    }
-
-    if (/\d/.test(formData.brand)) {
-      toast.error("Brand name can't have number", {
-        position: "bottom-left",
-        theme: "dark",
-        closeOnClick: true,
-      });
-      return;
-    }
-
-    if (
-      isNaN(formData.productionYear) ||
-      formData.productionYear < 1885 ||
-      formData.productionYear > new Date().getFullYear()
-    ) {
-      toast.error("Release year must be number");
-      return;
-    }
-
-    if (savedCars.length >= 10) {
-      toast.error("Already 10 cars added to page", {
-        position: "bottom-left",
-        theme: "dark",
-      });
-      return;
-    }
+    if (!validateData(savedCars)) return;
 
     const newCar = new Car(
       formData.brand,
