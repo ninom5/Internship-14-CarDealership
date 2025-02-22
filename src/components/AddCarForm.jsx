@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import "../styles/newCarForm.css";
 import { toast, ToastContainer } from "react-toastify";
 
-const AddCar = () => {
-  const [cars, setCars] = useState([]);
+const AddCar = ({ setSavedCars }) => {
   const [formData, setFormData] = useState({
     brand: "",
     model: "",
@@ -12,11 +11,6 @@ const AddCar = () => {
     productionYear: "",
     registrationExpiry: "",
   });
-
-  useEffect(() => {
-    const cars = JSON.parse(localStorage.getItem("cars")) || [];
-    if (cars.length > 0) setCars(cars);
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,21 +54,6 @@ const AddCar = () => {
       return;
     }
 
-    // if (
-    //   savedCars.some(
-    //     (car) =>
-    //       car.brand === formData.brand &&
-    //       car.model === formData.model &&
-    //       car.type === formData.type
-    //   )
-    // ) {
-    //   toast.error("Car already exist", {
-    //     position: "bottom-left",
-    //     theme: "dark",
-    //   });
-    //   return;
-    // }
-
     if (savedCars.length >= 10) {
       toast.error("Already 10 cars added to page", {
         position: "bottom-left",
@@ -91,11 +70,7 @@ const AddCar = () => {
       formData.registrationExpiry
     );
 
-    setCars((prevCars) => {
-      const updatedCars = [...savedCars, newCar];
-      localStorage.setItem("cars", JSON.stringify(updatedCars));
-      return updatedCars;
-    });
+    setSavedCars([...savedCars, newCar]);
 
     setFormData({
       brand: "",

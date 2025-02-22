@@ -4,7 +4,13 @@ import { toast } from "react-toastify";
 
 const CarCard = ({ car, setSavedCars }) => {
   const handleDelete = (carToDelete) => {
-    if (!confirm(`Do you really want to delete car: ${(car.brand, car.model)}`))
+    if (
+      !confirm(
+        `Do you really want to delete car: ${
+          car.brand + " " + car.model + " " + car.productionYear
+        } `
+      )
+    )
       return;
 
     toast.success("Successfully deleted car", {
@@ -18,8 +24,18 @@ const CarCard = ({ car, setSavedCars }) => {
     );
   };
 
+  const registrationExpiryCheck = () => {
+    const expiryDate = new Date(car.registrationExpiry);
+    const dateMonthLater = new Date();
+    dateMonthLater.setMonth(dateMonthLater.getMonth() + 1);
+
+    return expiryDate <= dateMonthLater;
+  };
+
+  const style = registrationExpiryCheck() ? { border: "1px solid red" } : {};
+
   return (
-    <div className="card">
+    <div className="card" style={style}>
       <img src={defaultCarImage} alt="car card image" id="car-card-image" />
       <h3>
         Brand: <span id="card-h2-span">{car.brand}</span>

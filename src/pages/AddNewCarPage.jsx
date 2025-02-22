@@ -2,11 +2,11 @@ import Header from "../components/Header";
 import AddCar from "../components/AddCarForm";
 import "../styles/newCarPage.css";
 
-const AddNewCarPage = () => {
+const AddNewCarPage = ({ setSavedCars }) => {
   return (
     <div className="add-car-page">
       <Header />
-      <AddCar />
+      <AddCar setSavedCars={setSavedCars} />
     </div>
   );
 };

@@ -3,15 +3,32 @@ import MainPage from "./pages/MainPage";
 import AddNewCarPage from "./pages/AddNewCarPage";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [savedCars, setSavedCars] = useState(() => {
+    return JSON.parse(localStorage.getItem("cars")) || [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cars", JSON.stringify(savedCars));
+  }, [savedCars]);
+
   return (
     <BrowserRouter>
       <div id="main">
         <Header />
         <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/add-new-car" element={<AddNewCarPage />} />
+          <Route
+            path="/"
+            element={
+              <MainPage savedCars={savedCars} setSavedCars={setSavedCars} />
+            }
+          />
+          <Route
+            path="/add-new-car"
+            element={<AddNewCarPage setSavedCars={setSavedCars} />}
+          />
         </Routes>
       </div>
     </BrowserRouter>
