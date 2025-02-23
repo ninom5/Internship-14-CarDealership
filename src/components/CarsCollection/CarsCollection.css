@@ -1,0 +1,9 @@
+.car-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+  margin-top: 200px;
+  justify-self: center;
+  width: 90%;
+}

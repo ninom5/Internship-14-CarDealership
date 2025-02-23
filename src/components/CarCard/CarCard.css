@@ -1,5 +1,7 @@
 .card {
   position: relative;
+  width: 25%;
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -7,10 +9,9 @@
   letter-spacing: 0.5px;
   border: 1px solid white;
   border-radius: 8px;
-  width: 25%;
-  height: auto;
   background-color: lightgray;
   padding: 30px;
+  margin-bottom: 70px;
 }
 
 .delete-card-btn {

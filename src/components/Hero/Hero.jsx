@@ -15,21 +15,19 @@ const Hero = ({ setSearchInput }) => {
 
   return (
     <section className="hero-section">
-      <div className="hero-container">
-        <div className="hero-container__background">
-          <img src={HeroImg} alt="hero garage background" />
-        </div>
-        <div className="filter-input">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={inputValue}
-            onChange={handleInputChange}
-          />
-          <button className="filter-button" onClick={handleButtonClick}>
-            Filter
-          </button>
-        </div>
+      <div className="hero-section__background">
+        <img src={HeroImg} alt="hero garage background" />
+      </div>
+      <div className="filter-input">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        <button className="filter-button" onClick={handleButtonClick}>
+          Filter
+        </button>
       </div>
     </section>
   );

@@ -1,20 +1,20 @@
-.hero-container {
+.hero-section {
   width: 100%;
   height: auto;
   overflow: hidden;
 }
-.hero-container__background {
+.hero-section__background {
   width: 100%;
   height: auto;
   position: relative;
   background-color: rgba(0, 0, 0, 0.1);
 }
-.hero-container__background img {
+.hero-section__background img {
   width: 100%;
   object-fit: cover;
   object-position: center;
 }
-.hero-container__background::after {
+.hero-section__background::after {
   content: "";
   position: absolute;
   top: 0;
@@ -60,16 +60,6 @@
 .filter-button:hover {
   background-color: black;
   color: white;
-}
-
-.car-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 30px;
-  margin-top: 100px;
-  justify-self: center;
-  width: 90%;
 }
 
 @media (min-width: 1350px) and (max-width: 1500px) {

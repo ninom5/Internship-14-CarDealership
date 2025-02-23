@@ -1,4 +1,4 @@
-import Car from "../../entity";
+import Car from "../../CarEntity.js";
 import { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -68,8 +68,8 @@ const AddCar = ({ setSavedCars }) => {
     if (!validateData(savedCars)) return;
 
     const newCar = new Car(
-      formData.brand,
-      formData.model,
+      formData.brand?.trim(),
+      formData.model?.trim(),
       formData.type,
       formData.productionYear,
       formData.registrationExpiry
