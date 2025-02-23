@@ -27,12 +27,12 @@
 
 .filter-input {
   display: flex;
-  width: 80%;
+  width: 75%;
   align-items: center;
   height: auto;
   justify-content: center;
   justify-self: center;
-  gap: 30px;
+  gap: 50px;
   background-color: lightgray;
   border-radius: 30px;
   position: absolute;
@@ -49,6 +49,17 @@
   padding: 20px;
   border: none;
   border-radius: 8px;
+}
+
+.filter-button {
+  padding: 12px 25px;
+  font-size: 20px;
+  background-color: white;
+  transition: 0.7s;
+}
+.filter-button:hover {
+  background-color: black;
+  color: white;
 }
 
 .car-cards {

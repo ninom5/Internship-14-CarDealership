@@ -4,6 +4,10 @@ import HeroImg from "../../assets/cars_cropped.jpg";
 const Hero = ({ setSearchInput }) => {
   const [inputValue, setInputValue] = useState("");
 
+  const handleButtonClick = () => {
+    setSearchInput(inputValue);
+  };
+
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
     setSearchInput(event.target.value);
@@ -22,6 +26,9 @@ const Hero = ({ setSearchInput }) => {
             value={inputValue}
             onChange={handleInputChange}
           />
+          <button className="filter-button" onClick={handleButtonClick}>
+            Filter
+          </button>
         </div>
       </div>
     </section>
