@@ -1,5 +1,5 @@
-import defaultCarImage from "../../assets/car_default_image.jpg";
-import { toast } from "react-toastify";
+import defaultCarImage from "../../assets/images/car_default_image.jpg";
+import ToastUtil from "../../utils/toast";
 
 const CarCard = ({ car, setSavedCars }) => {
   const handleDelete = (carToDelete) => {
@@ -12,15 +12,9 @@ const CarCard = ({ car, setSavedCars }) => {
     )
       return;
 
-    toast.success("Successfully deleted car", {
-      position: "bottom-left",
-      theme: "dark",
-      closeOnClick: true,
-    });
+    ToastUtil("Successfully deleted car", "success");
 
-    setSavedCars((prevCars) =>
-      prevCars.filter((c) => c.model !== carToDelete.model)
-    );
+    setSavedCars((prevCars) => prevCars.filter((c) => c !== carToDelete));
   };
 
   const registrationExpiryCheck = () => {

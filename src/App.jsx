@@ -29,6 +29,7 @@ function App() {
             path="/add-new-car"
             element={<AddNewCarPage setSavedCars={setSavedCars} />}
           />
+          <Route path="*" />
         </Routes>
       </div>
     </BrowserRouter>

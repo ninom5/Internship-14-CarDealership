@@ -1,6 +1,7 @@
 import Car from "../../models/CarEntity.js";
-import { useState, useEffect } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import ToastUtil from "../../utils/toast.js";
 
 const AddCar = ({ setSavedCars }) => {
   const validateData = (savedCars) => {
@@ -11,20 +12,14 @@ const AddCar = ({ setSavedCars }) => {
       !formData.productionYear ||
       !formData.registrationExpiry
     ) {
-      toast.error("All fields are required", {
-        position: "bottom-left",
-        theme: "dark",
-        closeOnClick: true,
-      });
+      ToastUtil("All fields are required", "error");
+
       return false;
     }
 
     if (/\d/.test(formData.brand)) {
-      toast.error("Brand name can't have number", {
-        position: "bottom-left",
-        theme: "dark",
-        closeOnClick: true,
-      });
+      ToastUtil("Brand name can't have number", "error");
+
       return false;
     }
 
@@ -33,15 +28,14 @@ const AddCar = ({ setSavedCars }) => {
       formData.productionYear < 1885 ||
       formData.productionYear > new Date().getFullYear()
     ) {
-      toast.error("Release year must be number");
+      ToastUtil("Release year must be number", "error");
+
       return false;
     }
 
     if (savedCars.length >= 10) {
-      toast.error("Already 10 cars added to page", {
-        position: "bottom-left",
-        theme: "dark",
-      });
+      ToastUtil("Already 10 cars added to page", "error");
+
       return false;
     }
 
@@ -84,11 +78,7 @@ const AddCar = ({ setSavedCars }) => {
       productionYear: "",
       registrationExpiry: "",
     });
-    toast.success("Car added successfully", {
-      position: "bottom-left",
-      theme: "dark",
-      closeOnClick: true,
-    });
+    ToastUtil("Car added successfully", "success");
   };
 
   return (
