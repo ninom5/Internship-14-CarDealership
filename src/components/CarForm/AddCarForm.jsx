@@ -1,4 +1,4 @@
-import Car from "../../CarEntity.js";
+import Car from "../../models/CarEntity.js";
 import { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
