@@ -1,5 +1,4 @@
-import "../styles/card.css";
-import defaultCarImage from "../assets/car_default_image.jpg";
+import defaultCarImage from "../../assets/car_default_image.jpg";
 import { toast } from "react-toastify";
 
 const CarCard = ({ car, setSavedCars }) => {

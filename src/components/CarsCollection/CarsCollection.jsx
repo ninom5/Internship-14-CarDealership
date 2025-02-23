@@ -1,7 +1,7 @@
-import CarCard from "./CarCard";
+import CarCard from "../CarCard/CarCard";
 import { ToastContainer } from "react-toastify";
 
-const CarsCards = ({ cars, setSavedCars, searchInput }) => {
+const CarsCollection = ({ cars, setSavedCars, searchInput }) => {
   const searchedCars = cars.filter(
     (car) =>
       car.brand.toLowerCase().includes(searchInput.toLowerCase()) ||
@@ -36,4 +36,4 @@ const CarsCards = ({ cars, setSavedCars, searchInput }) => {
   );
 };
 
-export default CarsCards;
+export default CarsCollection;

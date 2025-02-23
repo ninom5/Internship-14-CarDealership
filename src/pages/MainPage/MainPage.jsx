@@ -1,6 +1,5 @@
-import Hero from "../components/Hero";
-import Header from "../components/Header";
-import CarsCards from "../components/CarsCardsMain";
+import Hero from "../../components/Hero/Hero";
+import CarsCards from "../../components/CarsCollection/CarsCollection";
 import { useState } from "react";
 
 const MainPage = ({ savedCars, setSavedCars }) => {
@@ -8,7 +7,6 @@ const MainPage = ({ savedCars, setSavedCars }) => {
 
   return (
     <>
-      <Header />
       <Hero setSearchInput={setSearchInput} />
       <CarsCards
         cars={savedCars}

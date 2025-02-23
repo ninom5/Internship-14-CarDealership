@@ -1,8 +1,8 @@
-@import "./styles/header.css";
-@import "./styles/hero.css";
-@import "./styles/newCarPage.css";
-@import "./styles/newCarForm.css";
-@import "./styles//card.css";
+@import "./components/Header/Header.css";
+@import "./components/Hero/Hero.css";
+@import "./pages/NewCarPage/AddNewCarPage.css";
+@import "./components/CarForm/AddCarForm.css";
+@import "./components/CarCard/CarCard.css";
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 * {

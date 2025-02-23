@@ -1,6 +1,5 @@
-import Car from "../entity";
+import Car from "../../entity";
 import { useState, useEffect } from "react";
-import "../styles/newCarForm.css";
 import { toast, ToastContainer } from "react-toastify";
 
 const AddCar = ({ setSavedCars }) => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import HeroImg from "../assets/cars_cropped.jpg";
+import HeroImg from "../../assets/cars_cropped.jpg";
 
 const Hero = ({ setSearchInput }) => {
   const [inputValue, setInputValue] = useState("");

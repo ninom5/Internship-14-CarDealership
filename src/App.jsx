@@ -1,6 +1,6 @@
-import Header from "./components/Header";
-import MainPage from "./pages/MainPage";
-import AddNewCarPage from "./pages/AddNewCarPage";
+import Header from "./components/Header/Header";
+import MainPage from "./pages/MainPage/MainPage.jsx";
+import AddNewCarPage from "./pages/NewCarPage/AddNewCarPage";
 import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
